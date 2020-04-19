@@ -12,15 +12,44 @@ import com.agustincantero.restwebservice.entity.Todo;
 public class HarcodedService {
 
 	private static List<Todo> todos = new ArrayList<Todo>();
-	private static int idCounte = 0;
-	
+	private static int idCounter = 0;
+
 	static {
-		todos.add(new Todo(++idCounte,"Agustin", "Learn to Dance", new Date(), false));
-		todos.add(new Todo(++idCounte,"Agustin", "Learn about MicroServices", new Date(), false));
-		todos.add(new Todo(++idCounte,"Agustin", "Learn about Angular", new Date(), false));
+		todos.add(new Todo(++idCounter, "Agustin", "Learn to Dance", new Date(), false));
+		todos.add(new Todo(++idCounter, "Agustin", "Learn about MicroServices", new Date(), false));
+		todos.add(new Todo(++idCounter, "Agustin", "Learn about Angular", new Date(), false));
+	}
+
+	public List<Todo> findAll() {
+		return todos;
+	}
+
+	public Todo deleteById(long id) {
+		
+		Todo todo = findById(id);
+		if (todo != null) {
+			todos.remove(todo);
+		}
+		return todo;
+	}
+
+	public Todo findById(long id) {
+		for (Todo todo : todos) {
+			if (todo.getId() == id) {
+				return todo;
+			}
+		}
+		return null;
 	}
 	
-	public List<Todo> findAll(){
-		return todos;
+	public Todo save(Todo todo) {
+		if(todo.getId() == -1 || todo.getId() == 0) {
+			todo.setId(++idCounter);
+			todos.add(todo);
+		} else {
+			deleteById(todo.getId());
+			todos.add(todo);
+		}
+		return todo;
 	}
 }
