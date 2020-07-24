@@ -1,4 +1,4 @@
-package com.agustincantero.restwebservice.basic.auth;
+package com.agustincantero.basic.auth;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

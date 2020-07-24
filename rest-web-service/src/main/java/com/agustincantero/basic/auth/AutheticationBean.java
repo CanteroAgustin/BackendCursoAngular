@@ -1,4 +1,4 @@
-package com.agustincantero.restwebservice.basic.auth;
+package com.agustincantero.basic.auth;
 
 public class AutheticationBean {
 
