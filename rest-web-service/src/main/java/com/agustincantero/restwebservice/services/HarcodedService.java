@@ -12,7 +12,7 @@ import com.agustincantero.restwebservice.entity.Todo;
 public class HarcodedService {
 
 	private static List<Todo> todos = new ArrayList<Todo>();
-	private static int idCounter = 0;
+	private static long idCounter = 0;
 
 	static {
 		todos.add(new Todo(++idCounter, "Agustin", "Learn to Dance", new Date(), false));
